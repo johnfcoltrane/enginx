@@ -45,6 +45,16 @@ server {
         add_header $document_root$fastcgi_script_name $document_root$fastcgi_script_name;
         add_header $document_root$fastcgi_path_info $document_root$fastcgi_path_info;
     }
+    location ~ \.php5$ {
+        fastcgi_pass    unix:/var/run/php5-fpm.sock;
+        fastcgi_index   index.php;
+        fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include         fastcgi_params;
+
+        add_header $request_filename $request_filename;
+        add_header $document_root$fastcgi_script_name $document_root$fastcgi_script_name;
+        add_header $document_root$fastcgi_path_info $document_root$fastcgi_path_info;
+    }
 
 	# Only for nginx-naxsi used with nginx-naxsi-ui : process denied requests
 	#location /RequestDenied {

@@ -1,0 +1,8 @@
+# イメージ一覧
+vboxmanage list vms
+
+# 開始
+vboxmanage startvm Ubuntu
+
+# 電源OFF
+VBoxManage controlvm Ubuntu poweroff
